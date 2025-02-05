@@ -6,7 +6,7 @@ body {
   justify-content: flex-start;
   min-height: 100vh;
   margin: 0 auto;
-  background-image: url("images/background.webp");
+  background-image: url("/images/background.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
