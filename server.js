@@ -40,6 +40,6 @@ app.post('/api/scores', (req, res) => {                    // Save res
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.listen(PORT, () => {
-    console.log(`Server is on http://localhost:${PORT}`);
+app.listen(process.env.PORT || 8080, () => {
+    console.log(`Server is running on port ${process.env.PORT || 8080}`);
 });
