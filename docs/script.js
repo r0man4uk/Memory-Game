@@ -5,6 +5,7 @@ let firstCard = null;
 let secondCard = null;
 let revealed = [];
 let currentSize = null;
+const serverRailways = process.env.SERVER_URL || "http://localhost:3000";
 
 function generateCards(size) {
     const images = Array.from({ length: (size * size) / 2 }, (_, i) => `${i + 1}.svg`);
@@ -126,7 +127,7 @@ function checkWin() {
 async function saveScore(moves, time) {
     const playerName = document.getElementById("player-name").value.trim();
     try {
-        const response = await fetch("http://localhost:3000/api/scores", {
+        const response = await fetch("${serverRailways}/api/scores", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -145,7 +146,7 @@ async function saveScore(moves, time) {
 
 async function updateTopScores() {
     try {
-        const response = await fetch("http://localhost:3000/api/scores");
+        const response = await fetch("${serverRailways}/api/scores");
         const scores = await response.json();
 
         const tableBody = document.getElementById("top-scores");
