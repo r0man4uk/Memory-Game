@@ -89,12 +89,17 @@ function startGame(size) {
     startTimer();
 }
 
-document.getElementById("player-name").addEventListener("input", function() {             // Обмеження по вводу та пустому полю
-    const inputPlace = this;
+document.getElementById("player-name").addEventListener("input", function() {
+    const inputField = this;
     const regex = /^[a-zA-Zа-яА-ЯїЇєЄіІґҐ\s]+$/;
-    if (!regex.test(inputPlace.value)) {
-        alert("❌ Лише кирилиця | латиниця")
-        inputPlace.value = "";
+    const errorMessage = document.getElementById("error-message");
+
+    if (!regex.test(inputField.value)) {
+        errorMessage.textContent = "❌ Лише кирилиця або латиниця!";
+        errorMessage.style.display = "block";
+        inputField.value = inputField.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐ\s]/g, "");
+    } else {
+        errorMessage.style.display = "none";
     }
 });
 
