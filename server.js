@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const corsOptions = {
-    origin: 'https://r0man4uk.github.io/Memory-Game/', // Вказати твій домен
+    origin: 'https://r0man4uk.github.io', // Вказати твій домен
     methods: 'GET,POST',
     allowedHeaders: 'Content-Type'
   };
