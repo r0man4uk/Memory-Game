@@ -87,6 +87,8 @@ table th {
 .card.revealed {
   background-color: #ffffff00;
   cursor: default;
+  transform: rotateY(180deg);
+  transition: transform 0.6s ease-in-out;
 }
 
 button {
