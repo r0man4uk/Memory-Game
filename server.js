@@ -43,3 +43,4 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.listen(PORT, () => {
     console.log(`Server is running on port ${process.env.PORT || 8080}`);
 });
+console.log("Running on port:", PORT);
