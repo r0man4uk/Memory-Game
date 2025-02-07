@@ -23,6 +23,11 @@ body {
   font-size: large;
 }
 
+#error-message {
+  color: #e34f26;
+  display: none;
+}
+
 #select-difficulty-screen {
   text-align: center;
   margin-top: 40px; 
