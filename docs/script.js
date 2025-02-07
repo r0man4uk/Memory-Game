@@ -117,7 +117,7 @@ function checkWin() {
 async function saveScore(moves, time) {
     const playerName = document.getElementById("player-name").value.trim();
     try {
-        const response = await fetch("${serverRailways}/api/scores", {
+        const response = await fetch(`${serverRailways}/api/scores`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
