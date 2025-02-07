@@ -5,7 +5,7 @@ let firstCard = null;
 let secondCard = null;
 let revealed = [];
 let currentSize = null;
-const serverRailways = process.env.SERVER_URL || "http://localhost:3000";
+const serverRailways = "https://memory-game.railway.app";
 
 function generateCards(size) {
     const images = Array.from({ length: (size * size) / 2 }, (_, i) => `${i + 1}.svg`);
@@ -129,6 +129,7 @@ async function saveScore(moves, time) {
             throw new Error("Failed to save score");
         }
         updateTopScores();
+        console.log("Відправляю запит на:", `${serverRailways}/api/scores`);
     } catch (error) {
         console.error("Error saving score:", error);
     }
@@ -136,7 +137,7 @@ async function saveScore(moves, time) {
 
 async function updateTopScores() {
     try {
-        const response = await fetch("${serverRailways}/api/scores");
+        const response = await fetch(`${serverRailways}/api/scores`);
         const scores = await response.json();
 
         const tableBody = document.getElementById("top-scores");
