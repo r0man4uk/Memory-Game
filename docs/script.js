@@ -88,19 +88,6 @@ function startGame(size) {
 
     startTimer();
 }
-
-document.getElementById("player-name").addEventListener("input", function() {
-    const inputField = this;
-    const errorMessage = document.getElementById("error-message");
-
-    if (inputField.value.trim() === "") {
-        errorMessage.textContent = "❌ Поле не може бути порожнім!";
-        errorMessage.style.display = "block";
-    } else {
-        errorMessage.style.display = "none";
-    }
-});
-
 function resetCards() {
     if (firstCard && secondCard) {
         setTimeout(() => {
