@@ -92,7 +92,7 @@ table th {
   transform: rotateY(180deg);
 }
 
-.card .back {
+/* .card .back {
   position: absolute;
   top: 0;
   left: 0;
@@ -101,7 +101,7 @@ table th {
   background-color: #1b73ba; 
   transform: rotateY(180deg);
   backface-visibility: hidden;
-}
+} */
 
 button {
   margin-top: 10px;
