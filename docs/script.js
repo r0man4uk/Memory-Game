@@ -91,13 +91,11 @@ function startGame(size) {
 
 document.getElementById("player-name").addEventListener("input", function() {
     const inputField = this;
-    const regex = /^[a-zA-Zа-яА-ЯїЇєЄіІґҐ\s]+$/;
     const errorMessage = document.getElementById("error-message");
 
-    if (!regex.test(inputField.value)) {
-        errorMessage.textContent = "❌ Лише кирилиця або латиниця!";
+    if (inputField.value.trim() === "") {
+        errorMessage.textContent = "❌ Поле не може бути порожнім!";
         errorMessage.style.display = "block";
-        inputField.value = inputField.value.replace(/[^a-zA-Zа-яА-ЯїЇєЄіІґҐ\s]/g, "");
     } else {
         errorMessage.style.display = "none";
     }
