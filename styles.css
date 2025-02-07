@@ -71,24 +71,36 @@ table th {
   color: white;
   font-size: 24px;
   display: flex;
-  display: block;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
 }
 
 .card img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  backface-visibility: hidden;
 }
 
 .card.revealed {
   background-color: #ffffff00;
   cursor: default;
   transform: rotateY(180deg);
-  transition: transform 0.6s ease-in-out;
+}
+
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1b73ba; 
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 
 button {

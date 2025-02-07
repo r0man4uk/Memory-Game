@@ -109,7 +109,7 @@ function resetCards() {
             revealed[secondCard.index] = false;
             firstCard = null;
             secondCard = null;
-        }, 400);
+        }, 1000);
     }
 }
 
