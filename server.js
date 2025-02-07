@@ -3,34 +3,27 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 
-const corsOptions = {
-    origin: 'https://r0man4uk.github.io', 
-    methods: 'GET,POST',
-    allowedHeaders: 'Content-Type'
-};
-
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const DATA_FILE = path.join(__dirname, 'scores.json');
 
 app.use(express.json());
-app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 if (!fs.existsSync(DATA_FILE)) {
     fs.writeFileSync(DATA_FILE, JSON.stringify([]));
 }
 
-app.get('/api/scores', (req, res) => {
+app.get('/api/scores', (req, res) => {                     // Get res
     const data = JSON.parse(fs.readFileSync(DATA_FILE));
     res.json(data);
 });
 
-app.post('/api/scores', (req, res) => {
+app.post('/api/scores', (req, res) => {                    // Save res
     const { name, moves, time } = req.body;
 
     if (!name || typeof moves !== 'number' || typeof time !== 'number') {
-        return res.status(400).json({ error: 'Invalid data' });
+        return res.status(400).json({ error: 'Invalidushka data' });
     }
 
     const scores = JSON.parse(fs.readFileSync(DATA_FILE));
@@ -38,14 +31,14 @@ app.post('/api/scores', (req, res) => {
 
     scores.sort((a, b) => a.moves - b.moves || a.time - b.time);
 
-    const topScores = scores.slice(0, 10);  // Топ 10 результатів
+    const topScores = scores.slice(0, 10);           // Top Scores => max 10
 
     fs.writeFileSync(DATA_FILE, JSON.stringify(topScores, null, 2));
-    res.status(201).json({ message: 'Score saved!' });
+    res.status(201).json({ message: 'Результат записано!' });
 });
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is on http://localhost:${PORT}`);
 });

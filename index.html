@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/svg+xml" href="./images/js_images/2.svg" />
+    <link rel="icon" href="/images/js_images/2.svg" />
   </head>
   <body>
     <div id="title">
@@ -13,8 +13,7 @@
     </div>
     <div id="player">
       <label for="player-name">Вкажіть ім'я гравця:</label>
-      <input type="text" id="player-name" placeholder="Введіть ім'я" />
-      <p id="error-message"></p>
+      <input type="text" id="player-name" placeholder="" />
     </div>
     <div id="select-difficulty-screen">
       <h2>Вибір рівня складності</h2>
@@ -31,7 +30,7 @@
             <th>Кліки</th>
             <th>Час</th>
           </tr>
-        </thead>  
+        </thead>
         <tbody id="top-scores">
           <tr>
             <td colspan="3">Нема результатів || сервер не запущений</td>
@@ -51,6 +50,6 @@
       <button onclick="showStartScreen()">Main Menu</button>
     </div>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
   </body>
 </html>

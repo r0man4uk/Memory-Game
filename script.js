@@ -5,7 +5,6 @@ let firstCard = null;
 let secondCard = null;
 let revealed = [];
 let currentSize = null;
-const serverRailways = "https://memory-game.railway.app";
 
 function generateCards(size) {
     const images = Array.from({ length: (size * size) / 2 }, (_, i) => `${i + 1}.svg`);
@@ -88,6 +87,16 @@ function startGame(size) {
 
     startTimer();
 }
+
+document.getElementById("player-name").addEventListener("input", function() {             // Обмеження по вводу та пустому полю
+    const inputPlace = this;
+    const regex = /^[a-zA-Zа-яА-ЯїЇєЄіІґҐ\s]+$/;
+    if (!regex.test(inputPlace.value)) {
+        alert("❌ Лише кирилиця | латиниця")
+        inputPlace.value = "";
+    }
+});
+
 function resetCards() {
     if (firstCard && secondCard) {
         setTimeout(() => {
@@ -117,7 +126,7 @@ function checkWin() {
 async function saveScore(moves, time) {
     const playerName = document.getElementById("player-name").value.trim();
     try {
-        const response = await fetch(`${serverRailways}/api/scores`, {
+        const response = await fetch("http://localhost:3000/api/scores", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -129,7 +138,6 @@ async function saveScore(moves, time) {
             throw new Error("Failed to save score");
         }
         updateTopScores();
-        console.log("Відправляю запит на:", `${serverRailways}/api/scores`);
     } catch (error) {
         console.error("Error saving score:", error);
     }
@@ -137,7 +145,7 @@ async function saveScore(moves, time) {
 
 async function updateTopScores() {
     try {
-        const response = await fetch(`${serverRailways}/api/scores`);
+        const response = await fetch("http://localhost:3000/api/scores");
         const scores = await response.json();
 
         const tableBody = document.getElementById("top-scores");
